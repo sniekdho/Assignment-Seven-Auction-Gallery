@@ -1,9 +1,12 @@
 import "./App.css";
+import Banner from "./components/Banner/Banner";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <>
-      <h1>Auction Gallery</h1>
+      <Navbar></Navbar>
+      <Banner></Banner>
     </>
   );
 }
