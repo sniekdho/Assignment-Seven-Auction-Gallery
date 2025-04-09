@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Item from "../Item/Item";
 import { FaRegHeart } from "react-icons/fa";
+import Favorite from "../Favorite/Favorite";
 
 const Items = () => {
   const [items, setItems] = useState([]);
@@ -10,6 +11,12 @@ const Items = () => {
       .then((response) => response.json())
       .then((data) => setItems(data));
   }, []);
+
+  const [favorites, setFavorites] = useState([]);
+
+  const handleFavorite = (item) => {
+    setFavorites([...favorites, item]);
+  };
 
   return (
     <div className="py-20">
@@ -21,7 +28,7 @@ const Items = () => {
       </div>
 
       <div className="container mx-auto flex gap-5">
-        <div className="left-part w-[70%] bg-white rounded-lg shadow-sm">
+        <div className="left-part w-[70%] bg-white rounded-lg shadow-sm h-full">
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
@@ -36,7 +43,11 @@ const Items = () => {
               {/* body */}
               <tbody>
                 {items.map((item) => (
-                  <Item item={item}></Item>
+                  <Item
+                    key={item.id}
+                    item={item}
+                    handleFavorite={handleFavorite}
+                  ></Item>
                 ))}
               </tbody>
             </table>
@@ -63,27 +74,35 @@ const Items = () => {
                   </thead>
                   <tbody>
                     {/* rows */}
-                    <tr>
-                      <td colSpan="2">
-                        <div className="text-center space-y-3 p-3">
-                          <h1 className="text-black font-bold">
-                            No favorites yet
-                          </h1>
-                          <p className="text-sm text-black font-light opacity-70">
-                            Click the heart icon on any item <br /> to add it to
-                            your favorites
-                          </p>
-                        </div>
-                      </td>
-                    </tr>
+                    {favorites.length === 0 ? (
+                      <tr>
+                        <td colSpan="2">
+                          <div className="text-center space-y-3 p-3">
+                            <h1 className="text-black font-bold">
+                              No favorites yet
+                            </h1>
+                            <p className="text-sm text-black font-light opacity-70">
+                              Click the heart icon on any item <br /> to add it
+                              to your favorites
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : (
+                      favorites.map((favorite) => (
+                        <tr>
+                          <td colSpan="2">
+                            <Favorite favorite={favorite}></Favorite>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                   {/* foot */}
                   <tfoot>
-                    <tr>
-                      <div className="flex justify-between text-black opacity-60 py-1">
-                        <th>Total Bids Amount</th>
-                        <th>$0000</th>
-                      </div>
+                    <tr className="text-black opacity-60">
+                      <th className="text-left py-4">Total Bids Amount</th>
+                      <th className="text-right py-4">$0000</th>
                     </tr>
                   </tfoot>
                 </table>

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRegHeart } from "react-icons/fa";
 
-const Item = ({ item }) => {
+const Item = ({ item, handleFavorite }) => {
   return (
     <tr>
       <td>
@@ -19,7 +19,12 @@ const Item = ({ item }) => {
       <td className="text-center text-[#0E2954]">${item.currentBidPrice}</td>
       <td className="text-center text-[#0E2954]">{item.timeLeft}</td>
       <td className="justify-items-center">
-        <FaRegHeart className="cursor-pointer" color="#0E2954" size={20} />
+        <button
+          onClick={() => handleFavorite(item)}
+          className="flex cursor-pointer"
+        >
+          <FaRegHeart color="#0E2954" size={20} />
+        </button>
       </td>
     </tr>
   );
