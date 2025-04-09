@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Item from "../Item/Item";
 import { FaRegHeart } from "react-icons/fa";
 import Favorite from "../Favorite/Favorite";
+import { toast } from "react-toastify";
 
 const Items = () => {
   const [items, setItems] = useState([]);
@@ -13,9 +14,12 @@ const Items = () => {
   }, []);
 
   const [favorites, setFavorites] = useState([]);
+  const [bidPrice, setBidPrice] = useState(0);
 
   const handleFavorite = (item) => {
     setFavorites([...favorites, item]);
+    setBidPrice(bidPrice + parseInt(item.currentBidPrice.replace(/,/g, "")));
+    toast.success(`${item.title} added to favorites!`);
   };
 
   return (
@@ -92,7 +96,10 @@ const Items = () => {
                       favorites.map((favorite) => (
                         <tr>
                           <td colSpan="2">
-                            <Favorite favorite={favorite}></Favorite>
+                            <Favorite
+                              key={favorite.id}
+                              favorite={favorite}
+                            ></Favorite>
                           </td>
                         </tr>
                       ))
@@ -100,9 +107,9 @@ const Items = () => {
                   </tbody>
                   {/* foot */}
                   <tfoot>
-                    <tr className="text-black opacity-60">
+                    <tr className="text-black opacity-90">
                       <th className="text-left py-4">Total Bids Amount</th>
-                      <th className="text-right py-4">$0000</th>
+                      <th className="text-right py-4">${bidPrice}.00</th>
                     </tr>
                   </tfoot>
                 </table>

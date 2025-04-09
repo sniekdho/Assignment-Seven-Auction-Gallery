@@ -17,7 +17,7 @@ const Favorite = ({ favorite }) => {
           </div>
           <div>
             <h1 className="truncate max-w-52 font-medium">{favorite.title}</h1>
-            <div className="flex opacity-70">
+            <div className="flex opacity-75">
               <p>${favorite.currentBidPrice}</p>
               <p>Bids: {favorite.bidsCount}</p>
             </div>
