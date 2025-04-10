@@ -94,12 +94,9 @@ const Items = () => {
                       </tr>
                     ) : (
                       favorites.map((favorite) => (
-                        <tr>
+                        <tr key={favorite.id}>
                           <td colSpan="2">
-                            <Favorite
-                              key={favorite.id}
-                              favorite={favorite}
-                            ></Favorite>
+                            <Favorite favorite={favorite}></Favorite>
                           </td>
                         </tr>
                       ))
