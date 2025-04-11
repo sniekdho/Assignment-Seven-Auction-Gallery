@@ -13,7 +13,7 @@ const Favorite = ({ favorite, handleRemoveFromFavorite }) => {
                 favorite.title
               )
             }
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-auto"
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-auto hover:text-red-600 hover:bg-red-50"
           >
             ✕
           </button>

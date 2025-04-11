@@ -13,7 +13,7 @@ function App() {
       <Banner></Banner>
       <Main></Main>
       <Footer></Footer>
-      <ToastContainer position="top-right" autoClose={5000} />
+      <ToastContainer position="top-right" autoClose={2500} />
     </>
   );
 }

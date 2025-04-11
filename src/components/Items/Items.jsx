@@ -30,15 +30,15 @@ const Items = () => {
 
   return (
     <div className="py-20">
-      <div className="container mx-auto py-4">
+      <div className="container mx-auto py-4 text-center md:text-start">
         <h1 className="text-xl text-[#0E2954] font-bold">Active Auctions</h1>
         <p className="text-sm text-black font-light opacity-80">
           Discover and bid on extraordinary items
         </p>
       </div>
 
-      <div className="container mx-auto flex gap-5">
-        <div className="left-part w-[70%] bg-white rounded-lg shadow-sm h-full">
+      <div className="container mx-auto flex flex-col lg:flex-row gap-5">
+        <div className="w-full lg:w-2/3 bg-white rounded-lg shadow-sm h-full">
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
@@ -64,8 +64,8 @@ const Items = () => {
           </div>
         </div>
 
-        <div className="right-part w-[30%] rounded-xl">
-          <div className="card w-96 bg-base-100 card-md shadow-sm">
+        <div className="w-full lg:w-1/3 rounded-xl">
+          <div className="card w-full bg-base-100 card-md shadow-sm">
             <div>
               <div className="overflow-x-auto">
                 <table className="table">
