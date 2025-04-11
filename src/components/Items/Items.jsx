@@ -22,6 +22,12 @@ const Items = () => {
     toast.success(`${item.title} added to favorites!`);
   };
 
+  const handleRemoveFromFavorite = (id, price, title) => {
+    setFavorites(favorites.filter((remainFav) => remainFav.id !== id));
+    setBidPrice(bidPrice - parseInt(price.replace(/,/g, "")));
+    toast.warn(`${title} removed from favorites!`);
+  };
+
   return (
     <div className="py-20">
       <div className="container mx-auto py-4">
@@ -96,7 +102,12 @@ const Items = () => {
                       favorites.map((favorite) => (
                         <tr key={favorite.id}>
                           <td colSpan="2">
-                            <Favorite favorite={favorite}></Favorite>
+                            <Favorite
+                              favorite={favorite}
+                              handleRemoveFromFavorite={
+                                handleRemoveFromFavorite
+                              }
+                            ></Favorite>
                           </td>
                         </tr>
                       ))

@@ -1,11 +1,20 @@
 import React from "react";
 
-const Favorite = ({ favorite }) => {
+const Favorite = ({ favorite, handleRemoveFromFavorite }) => {
   return (
     <div className="card bg-base-100 shadow-sm border">
       <div className="card-body">
         <div className="card-actions justify-end">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-auto">
+          <button
+            onClick={() =>
+              handleRemoveFromFavorite(
+                favorite.id,
+                favorite.currentBidPrice,
+                favorite.title
+              )
+            }
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-auto"
+          >
             ✕
           </button>
         </div>
