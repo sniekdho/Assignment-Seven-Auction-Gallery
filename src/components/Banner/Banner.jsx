@@ -5,7 +5,7 @@ const Banner = () => {
     <div
       className="hero min-h-screen justify-items-start"
       style={{
-        backgroundImage: "url(https://i.ibb.co/jP8zKtpj/Banner-min.jpg)",
+        backgroundImage: "url(https://i.ibb.co/kgBtsLDG/Banner-min.jpgg)",
       }}
     >
       <div className="hero-overlay"></div>

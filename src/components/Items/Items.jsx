@@ -15,17 +15,20 @@ const Items = () => {
 
   const [favorites, setFavorites] = useState([]);
   const [bidPrice, setBidPrice] = useState(0);
+  const [favCount, setFavCount] = useState(0);
 
   const handleFavorite = (item) => {
     setFavorites([...favorites, item]);
     setBidPrice(bidPrice + parseInt(item.currentBidPrice.replace(/,/g, "")));
     toast.success(`${item.title} added to favorites!`);
+    setFavCount(favCount + 1);
   };
 
   const handleRemoveFromFavorite = (id, price, title) => {
     setFavorites(favorites.filter((remainFav) => remainFav.id !== id));
     setBidPrice(bidPrice - parseInt(price.replace(/,/g, "")));
     toast.warn(`${title} removed from favorites!`);
+    setFavCount(favCount - 1);
   };
 
   return (
@@ -79,6 +82,11 @@ const Items = () => {
                             Favorite Items
                           </span>
                         </div>
+                        {favCount > 0 && (
+                          <span className="text-[#861242]">
+                            Items:{favCount}
+                          </span>
+                        )}
                       </th>
                     </tr>
                   </thead>
